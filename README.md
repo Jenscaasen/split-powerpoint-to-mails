@@ -1,7 +1,7 @@
 # split-powerpoint-to-mails
 
 If you have a large PowerPoint file and want to send individual slides to different people, this PowerPoint Plugin helps.
-1) Compile Code or download here
+1) Compile Code or download the compiled executable here: https://github.com/Jenscaasen/split-powerpoint-to-mails/releases
 2) Install on target machine by doubleclicking the "VSTO" file in the ZIP archive
 3) Open PowerPoint file
 4) In "Send Sheets via Mail" Ribbon click "Set Receipients"
