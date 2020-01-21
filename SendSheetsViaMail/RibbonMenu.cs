@@ -41,39 +41,6 @@ namespace SendSheetsViaMail
             }
             form.Hide();
 
-            //var pApp = Globals.ThisAddIn.Application;
-            //var pres = pApp.ActivePresentation;
-            //var slide1 = pApp.ActivePresentation.Slides[2];
-
-            //var temporaryPresentation = Globals.ThisAddIn.Application.Presentations.Add(Microsoft.Office.Core.MsoTriState.msoTrue);
-          
-            // Copy(pres, 1,ref temporaryPresentation);
-            //slide1.Copy();
-            //temporaryPresentation.Slides.Paste();
-            //temporaryPresentation.Application.CommandBars.ExecuteMso()
-           // string slideDesignName = slide1.Design.Name;
-
-           // foreach (Design design in pres.Designs)
-           // {
-           //     temporaryPresentation.Designs.Add(design.Name);
-           // }
-
-           // CustomLayout cl = temporaryPresentation.Designs.[1].SlideMaster.CustomLayouts[slide1.CustomLayout.Index];
-
-           // var targetSlide = temporaryPresentation.Slides.AddSlide(1, cl);
-
-
-           // foreach (Shape shape in slide1.Shapes)
-           // {
-           //     try
-           //     {
-           //         shape.Copy();
-           //         targetSlide.Shapes.Paste();
-           //     }
-           //     catch (Exception) { };
-           // }
-           // temporaryPresentation.SaveAs( @"C:\temp\temp.pptx");
-           //// temporaryPresentation.Close();
         }
 
         private void PrepareMail( string mail, string department, string subject, string body)
@@ -136,21 +103,5 @@ namespace SendSheetsViaMail
             return sheetNumbers;
         }
 
-        private bool Copy(Presentation pptPresentation, int slideId, ref Presentation outputDeck)
-        {
-            int slideCountBeforeWrite = outputDeck.Slides.Count;
-
-            var pApp = Globals.ThisAddIn.Application;
-            pptPresentation.Slides[slideId].Copy();
-            outputDeck.Windows[1].Activate(); //Ensures that the destination ppt is activaed for writting 
-            outputDeck.Windows[1].View.GotoSlide(outputDeck.Slides.Count); // copy the slide to the last position of the powerpoint 
-            pApp.CommandBars.ExecuteMso("PasteSourceFormatting");
-
-            if (slideCountBeforeWrite == outputDeck.Slides.Count - 1) //check whether slide count increase or not
-            {
-                return true;
-            }
-            return false;
-        }
     }
 }
